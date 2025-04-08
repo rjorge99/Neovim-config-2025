@@ -46,5 +46,6 @@
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
   "vim-nightfly-guicolors": { "branch": "master", "commit": "ae2526badb9676af88566cebd9601887c70b76e8" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
-  "vim-tmux-navigator": { "branch": "master", "commit": "791dacfcfc8ccb7f6eb1c853050883b03e5a22fe" }
+  "vim-tmux-navigator": { "branch": "master", "commit": "791dacfcfc8ccb7f6eb1c853050883b03e5a22fe" },
+  "vscode.nvim": { "branch": "main", "commit": "49d6014ba151fc6cc585b8d5f057ca7839077bf8" }
 }

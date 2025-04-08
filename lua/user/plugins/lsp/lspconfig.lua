@@ -5,7 +5,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         -- { "antosha417/nvim-lsp-file-operations", config = true }, -- TODO: Check how it works
         "folke/neodev.nvim",
-        "themaxmarchuk/tailwindcss-colors.nvim",
+        -- "themaxmarchuk/tailwindcss-colors.nvim",
     },
     config = function()
         local lspconfig = require("lspconfig")
