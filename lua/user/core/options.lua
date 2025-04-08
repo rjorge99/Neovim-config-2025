@@ -32,7 +32,7 @@ opt.signcolumn = "yes"   -- always show the sign column, otherwise it would shif
 opt.backspace = "indent,eol,start" -- make backspace in insert mode behave as in most other editors
 
 -- clipboard
-opt.clipboard.append("unnamedplus") -- allows neovim to access the system clipboard
+opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 
 -- split windows
 opt.splitbelow = true -- force all horizontal splits to go below current window
