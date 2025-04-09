@@ -10,7 +10,7 @@ return {
         "L3MON4D3/LuaSnip",             -- snippet engine
         "saadparwaiz1/cmp_luasnip",     -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
-        -- "roobert/tailwindcss-colorizer-cmp.nvim",
+        "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
         local cmp = require("cmp")
@@ -19,7 +19,7 @@ return {
 
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip/loaders/from_vscode").lazy_load({ paths = { "./snippets" } })
+        --require("luasnip/loaders/from_vscode").lazy_load({ paths = { "./snippets" } })
 
         cmp.setup({
             completion = {
@@ -41,8 +41,8 @@ return {
             }),
             -- sources for autocompletion
             sources = cmp.config.sources({
-                { name = "nvim_lsp" }, -- lsp
                 { name = "luasnip" },  -- snippets
+                { name = "nvim_lsp" }, -- lsp
                 { name = "buffer" },   -- text within current buffer
                 { name = "path" },     -- file system paths
             }),
@@ -57,26 +57,7 @@ return {
                         buffer = "[Buffer]",
                         luasnip = "[LuaSnip]",
                     },
-                    before = function(entry, vim_item) -- for tailwind css autocomplete
-                        if vim_item.kind == "Color" and entry.completion_item.documentation then
-                            local _, _, r, g, b = string.find(entry.completion_item.documentation,
-                                "^rgb%((%d+), (%d+), (%d+)")
-                            if r then
-                                local color = string.format("%02x", r) ..
-                                    string.format("%02x", g) .. string.format("%02x", b)
-                                local group = "Tw_" .. color
-                                if vim.fn.hlID(group) < 1 then
-                                    vim.api.nvim_set_hl(0, group, { fg = "#" .. color })
-                                end
-                                vim_item.kind = "■" -- or "⬤" or anything
-                                vim_item.kind_hl_group = group
-                                return vim_item
-                            end
-                        end
-                        vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or
-                            vim_item.kind
-                        return vim_item
-                    end,
+                    before = require("tailwindcss-colorizer-cmp").formatter,
                 }),
             },
         })

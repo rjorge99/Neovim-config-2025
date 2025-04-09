@@ -5,7 +5,6 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         -- { "antosha417/nvim-lsp-file-operations", config = true }, -- TODO: Check how it works
         "folke/neodev.nvim",
-        -- "themaxmarchuk/tailwindcss-colors.nvim",
     },
     config = function()
         local lspconfig = require("lspconfig")
@@ -58,10 +57,6 @@ return {
 
             opts.desc = "Restart LSP"
             keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
-            if client.name == "tailwindcss" then
-                require("tailwindcss-colors").buf_attach(bufnr)
-            end
         end
 
         -- used to enable autocompletion (assign to every lsp server config)
@@ -111,26 +106,23 @@ return {
             filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
         })
 
-        lspconfig["tailwindcss"].setup({
-            capabilities = capabilities,
+        -- configure vue server
+        lspconfig["volar"].setup({
+
             on_attach = on_attach,
-            filetypes = {
-                "html",
-                "css",
-                "scss",
-                "javascriptreact",
-                "javascripvue",
-                "typescriptreact",
-                "typescripvue",
-                "svelte",
+            capabilities = capabilities,
+            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+            init_options = {
+                vue = {
+                    hybridMode = false,
+                },
+                typescript = {
+                    tsdk =
+                        vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/typescript/lib/"
+                },
             },
-            root_dir = function(fname)
-                return require("lspconfig").util.root_pattern("tailwind.config.cjs", "tailwind.config.js",
-                    "postcss.config.js")(
-                    fname
-                )
-            end,
         })
+
 
         -- configure emmet language server
         lspconfig["emmet_ls"].setup({

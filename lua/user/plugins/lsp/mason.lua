@@ -42,6 +42,8 @@ return {
                 "ansiblels",
                 "dockerls",
                 "docker_compose_language_service",
+                "volar"
+
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
