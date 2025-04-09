@@ -15,9 +15,10 @@ keymap("n", "<leader>+", "<C-a>", opts)                           -- increment n
 keymap("n", "<leader>-", "<C-x>", opts)                           -- decrement number
 
 -- Buffer management
-keymap("n", "<Tab>", ":bnext<CR>", opts)
-keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
-keymap("n", "<leader>bc", ":Bdelete<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>bc", ":Bdelete<CR>", opts)
+keymap("n", "<leader>bo", ":%bd|e#|bd#<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Window management
 keymap("n", "<leader>sv", "<C-w>v", opts)     -- split window vertically
@@ -60,6 +61,9 @@ keymap("v", ">", ">gv", opts) -- shift right
 ----------------------
 -- Plugin Keybinds --
 ----------------------
+-- Color Picker
+keymap("n", "<C-c>", "<cmd>PickColor<cr>", opts)
+keymap("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
 
 -- Varios
 -- keymap("n", "<leader><leader>r", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
@@ -73,17 +77,10 @@ keymap("v", ">", ">gv", opts) -- shift right
 -- keymap("n", "<leader><leader>cr", ":Lab code run<cr>", opts)
 -- keymap("n", "<leader><leader>cs", ":Lab code stop<cr>", opts)
 
--- Close buffers
--- keymap("n", "<leader>bc", ":bd<CR>", opts)
--- keymap("n", "<leader>bo", ":%bd|e#|bd#<CR>", opts)
 
--- Naviagate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Color Picker
--- keymap("n", "<C-c>", "<cmd>PickColor<cr>", opts)
--- keymap("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
+
+
 
 -- Vcoolor
 -- <Alt-R> you can insert a rgb color anywhere (NORMAL and INSERT modes).
