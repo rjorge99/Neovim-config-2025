@@ -24,8 +24,9 @@ opt.cursorline = true -- highlight the current line
 
 -- appearance
 opt.termguicolors = true -- set term gui colors (most terminals support this)
-opt.background = "dark"
-opt.signcolumn = "yes"   -- always show the sign column, otherwise it would shift the text each time
+vim.g.nvcode_termcolors = 256
+-- opt.background = "dark"
+opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 
 
 -- backspace

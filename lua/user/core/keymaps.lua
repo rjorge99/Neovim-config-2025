@@ -14,12 +14,22 @@ keymap("n", "x", '"_x', opts)                                     -- delete sing
 keymap("n", "<leader>+", "<C-a>", opts)                           -- increment number
 keymap("n", "<leader>-", "<C-x>", opts)                           -- decrement number
 
+-- Buffer management
+keymap("n", "<Tab>", ":bnext<CR>", opts)
+keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
+keymap("n", "<leader>bc", ":Bdelete<CR>", { noremap = true, silent = true })
+
 -- Window management
-keymap("n", "<leader>sv", "<C-w>v", opts)        -- split window vertically
-keymap("n", "<leader>sh", "<C-w>s", opts)        -- split window horizontally
-keymap("n", "<leader>se", "<C-w>=", opts)        -- make split windows equal width & height
-keymap("n", "<leader>sx", ":close<CR>", opts)    -- close current split window
-keymap("n", "<leader>w", "<cmd>close<CR>", opts) -- close current window
+keymap("n", "<leader>sv", "<C-w>v", opts)     -- split window vertically
+keymap("n", "<leader>sh", "<C-w>s", opts)     -- split window horizontally
+keymap("n", "<leader>se", "<C-w>=", opts)     -- make split windows equal width & height
+keymap("n", "<leader>sx", ":close<CR>", opts) -- close current split window
+keymap("n", "<leader>wc", ":close<CR>", opts) -- close current window
+
+keymap("n", "<C-Up>", ":resize +5<CR>", opt)
+keymap("n", "<C-Down>", ":resize -5<CR>", opt)
+keymap("n", "<C-Left>", ":vertical resize +5<CR>", opt)
+keymap("n", "<C-Right>", ":vertical resize -5<CR>", opt)
 
 -- Tab management
 keymap("n", "<leader>to", ":tabnew<CR>", opts)   -- open new tab

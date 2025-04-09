@@ -9,7 +9,15 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
-        require("neodev").setup()
+        require("neodev").setup({
+            library = {
+                enabled = true, -- habilita la biblioteca de Neovim
+                runtime = true,
+                types = true,
+                plugins = true,
+            },
+        })
+
 
         local keymap = vim.keymap
 
@@ -21,9 +29,9 @@ return {
             -- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
             keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
 
-            opts.desc = "Go to declaration"
+            opts.desc = "Peek definition"
             -- keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
-            keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- go to declaration
+            keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- Peek definition
 
             opts.desc = "Show LSP definitions"
             keymap.set("n", "gD", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
@@ -108,7 +116,6 @@ return {
 
         -- configure vue server
         lspconfig["volar"].setup({
-
             on_attach = on_attach,
             capabilities = capabilities,
             filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
@@ -154,6 +161,13 @@ return {
                     },
                 },
             },
+        })
+
+
+
+        -- Muestra visualmente los errores
+        vim.diagnostic.config({
+            virtual_text = true,
         })
     end,
 }

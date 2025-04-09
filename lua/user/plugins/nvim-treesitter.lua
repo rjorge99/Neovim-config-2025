@@ -35,7 +35,8 @@ return {
         "gitignore",
         "query",
         "vimdoc",
-        "tsx"
+        "tsx",
+        "vue"
       },
       highlight = { enable = true },
       indent = { enable = true },
@@ -80,5 +81,20 @@ return {
     })
 
     require("ts_context_commentstring").setup({})
+
+    -- -- Configure nvcode-color-schemes
+    -- vim.g.nvcode_termcolors = 256
+
+    -- -- Enable syntax highlighting
+    -- vim.cmd("syntax on")
+
+    -- -- Set colorscheme
+    -- vim.cmd("colorscheme nvcode") -- or whatever colorscheme you use
+
+    -- -- Enable true color if supported
+    -- if vim.fn.has("termguicolors") == 1 then
+    --   vim.opt.termguicolors = true
+    --   vim.cmd("highlight LineNr ctermbg=NONE guibg=NONE")
+    -- end
   end,
 }
