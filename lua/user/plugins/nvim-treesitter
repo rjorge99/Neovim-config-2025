@@ -35,6 +35,7 @@ return {
         "gitignore",
         "query",
         "vimdoc",
+        "tsx"
       },
       highlight = { enable = true },
       indent = { enable = true },

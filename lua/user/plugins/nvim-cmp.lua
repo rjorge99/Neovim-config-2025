@@ -47,7 +47,7 @@ return {
                 { name = "path" },     -- file system paths
             }),
             formatting = {
-                fields = { "kind", "abbr", "menu" },
+                fields = { "abbr", "kind", "menu" },
                 format = lspkind.cmp_format({
                     mode = "symbol_text", -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
                     maxwidth = 50,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
