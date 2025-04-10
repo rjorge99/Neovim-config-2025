@@ -70,14 +70,6 @@ return {
         -- used to enable autocompletion (assign to every lsp server config)
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
-        -- Change the Diagnostic symbols in the sign column (gutter)
-        -- (not in youtube nvim video)
-        local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-        end
-
         -- configure html server
         lspconfig["html"].setup({
             capabilities = capabilities,
@@ -94,7 +86,7 @@ return {
                     {
                         name = '@vue/typescript-plugin',
                         location = vim.fn.stdpath 'data' ..
-                        '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                            '/mason/packages/vue-language-server/node_modules/@vue/language-server',
                         languages = { 'vue' },
                     },
                 },
@@ -141,7 +133,6 @@ return {
             },
         })
 
-
         -- configure emmet language server
         lspconfig["emmet_ls"].setup({
             capabilities = capabilities,
@@ -179,6 +170,14 @@ return {
         -- Muestra visualmente los errores
         vim.diagnostic.config({
             virtual_text = true,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.WARN] = "",
+                    [vim.diagnostic.severity.INFO] = "󰠠",
+                    [vim.diagnostic.severity.HINT] = "",
+                },
+            },
         })
     end,
 }
