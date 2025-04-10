@@ -6,7 +6,6 @@ return {
     },
     config = function()
         -- import mason
-        -- mason must be loaded before lspconfig
         local mason = require("mason")
 
         -- import mason-lspconfig
