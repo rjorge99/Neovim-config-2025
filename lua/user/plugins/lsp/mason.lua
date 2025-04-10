@@ -6,6 +6,7 @@ return {
     },
     config = function()
         -- import mason
+        -- mason must be loaded before lspconfig
         local mason = require("mason")
 
         -- import mason-lspconfig
@@ -42,8 +43,7 @@ return {
                 "ansiblels",
                 "dockerls",
                 "docker_compose_language_service",
-                "volar"
-
+                "volar",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
@@ -52,7 +52,7 @@ return {
         mason_tool_installer.setup({
             ensure_installed = {
                 "prettier", -- prettier formatter
-                "stylua",   -- lua formatter
+                "stylua", -- lua formatter
                 -- "isort", -- python formatter
                 -- "black", -- python formatter
                 -- "pylint", -- python linter
