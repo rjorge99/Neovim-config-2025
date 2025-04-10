@@ -1,15 +1,16 @@
 return {
     {
         "bluz71/vim-nightfly-guicolors",
-        lazy = true,
         prority = 1000,
+        enabled = false,
         config = function()
-            --vim.cmd([[colorscheme nightfly]])
+            vim.cmd([[colorscheme nightfly]])
         end,
     },
     {
         "Mofiqul/vscode.nvim",
         priority = 1000,
+        enabled = false,
         config = function()
             vim.cmd([[colorscheme vscode]])
         end,
@@ -17,9 +18,17 @@ return {
     {
         "rjorge99/halcyon-neovim",
         priority = 1000,
-        lazy = true,
+        --enabled = false,
         config = function()
-            -- vim.cmd([[colorscheme halcyon]])
+            vim.cmd([[colorscheme halcyon]])
+        end,
+    },
+    {
+        "rose-pine/neovim",
+        priority = 1000,
+        enabled = false,
+        config = function()
+            vim.cmd([[colorscheme rose-pine]])
         end,
     },
 }
