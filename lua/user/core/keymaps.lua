@@ -2,60 +2,62 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)                              -- set space as leader key
-vim.g.mapleader = " "                                             -- set leader key
-vim.g.maplocalleader = " "                                        -- set local leader key
+keymap("", "<Space>", "<Nop>", opts)                                                                                       -- set space as leader key
+vim.g.mapleader =
+" "                                                                                                                        -- set leader key
+vim.g.maplocalleader =
+" "                                                                                                                        -- set local leader key
 
-keymap("n", "<leader>ss", ":w!<CR>", opts)                        -- save
-keymap("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" }) -- exit insert mode
-keymap("n", "QQ", "<cmd>:q!<CR>", opts)                           -- Exit
-keymap("n", "<leader>nh", "<cmd>nohlsearch<CR>", opts)            -- clear search highlights
-keymap("n", "x", '"_x', opts)                                     -- delete single character without copying into register
-keymap("n", "<leader>+", "<C-a>", opts)                           -- increment number
-keymap("n", "<leader>-", "<C-x>", opts)                           -- decrement number
+keymap("n", "<leader>ss", ":w!<CR>", { noremap = true, silent = true, desc = "Save" })                                     -- save
+keymap("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })                           -- exit insert mode
+keymap("n", "QQ", "<cmd>:q!<CR>", { noremap = true, silent = true, desc = "Save" })                                        -- Exit
+keymap("n", "<leader>nh", "<cmd>nohlsearch<CR>", { noremap = true, silent = true, desc = "Clear search highlights" })      -- clear search highlights
+keymap("n", "x", '"_x', { noremap = true, silent = true, desc = "Delete single character without copying into register" }) -- delete single character without copying into register
+keymap("n", "<leader>+", "<C-a>", { noremap = true, silent = true, desc = "Increment number" })                            -- increment number
+keymap("n", "<leader>-", "<C-x>", { noremap = true, silent = true, desc = "Decrement number" })                            -- decrement number
 
 -- Buffer management
-keymap("n", "<leader>bc", ":Bdelete<CR>", opts)
-keymap("n", "<leader>bo", ":%bd|e#|bd#<CR>", opts)
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<leader>bc", ":Bdelete<CR>", { noremap = true, silent = true, desc = "Close buffer" })
+keymap("n", "<leader>bo", ":%bd|e#|bd#<CR>", { noremap = true, silent = true, desc = "Close all buffers" })
+keymap("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
+keymap("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Previous buffer" })
 
 -- Window management
-keymap("n", "<leader>sv", "<C-w>v", opts)     -- split window vertically
-keymap("n", "<leader>sh", "<C-w>s", opts)     -- split window horizontally
-keymap("n", "<leader>se", "<C-w>=", opts)     -- make split windows equal width & height
-keymap("n", "<leader>sx", ":close<CR>", opts) -- close current split window
-keymap("n", "<leader>wc", ":close<CR>", opts) -- close current window
+keymap("n", "<leader>sv", "<C-w>v", { noremap = true, silent = true, desc = "Split window vertically" })                 -- split window vertically
+keymap("n", "<leader>sh", "<C-w>s", { noremap = true, silent = true, desc = "Split window horizontally" })               -- split window horizontally
+keymap("n", "<leader>se", "<C-w>=", { noremap = true, silent = true, desc = "Make split windows equal width & height" }) -- make split windows equal width & height
+keymap("n", "<leader>sx", ":close<CR>", { noremap = true, silent = true, desc = "Close current split window" })          -- close current split window
+keymap("n", "<leader>wc", ":close<CR>", { noremap = true, silent = true, desc = "Close current window" })                -- close current window
 
-keymap("n", "<C-Up>", ":resize +5<CR>", opt)
-keymap("n", "<C-Down>", ":resize -5<CR>", opt)
-keymap("n", "<C-Left>", ":vertical resize +5<CR>", opt)
-keymap("n", "<C-Right>", ":vertical resize -5<CR>", opt)
+keymap("n", "<C-Up>", ":resize +5<CR>", { noremap = true, silent = true, desc = "Resize up" })
+keymap("n", "<C-Down>", ":resize -5<CR>", { noremap = true, silent = true, desc = "Resize down" })
+keymap("n", "<C-Left>", ":vertical resize +5<CR>", { noremap = true, silent = true, desc = "Resize left" })
+keymap("n", "<C-Right>", ":vertical resize -5<CR>", { noremap = true, silent = true, desc = "Resize right" })
 
 -- Tab management
-keymap("n", "<leader>to", ":tabnew<CR>", opts)   -- open new tab
-keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- close current tab
-keymap("n", "<leader>tn", ":tabn<CR>", opts)     -- go to next tab
-keymap("n", "<leader>tp", ":tabp<CR>", opts)     -- go to previous tab
-keymap("n", "<leader>tf", ":tabnew %<CR>", opts) -- move current buffer to new tab
+-- keymap("n", "<leader>to", ":tabnew<CR>", opts)   -- open new tab
+-- keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- close current tab
+-- keymap("n", "<leader>tn", ":tabn<CR>", opts)     -- go to next tab
+-- keymap("n", "<leader>tp", ":tabp<CR>", opts)     -- go to previous tab
+-- keymap("n", "<leader>tf", ":tabnew %<CR>", opts) -- move current buffer to new tab
 
 -- Move text up and down
-keymap("v", "J", ":m '>+1<CR>gv=gv", opts) -- move selected lines down
-keymap("v", "K", ":m '<-2<CR>gv=gv", opts) -- move selected lines up
+keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move selected lines down" })          -- move selected lines down
+keymap("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selected lines up" })            -- move selected lines up
 
-keymap("n", "J", "mzJ`z", opts)            -- J keeps cursor in current position
+keymap("n", "J", "mzJ`z", { noremap = true, silent = true, desc = "J keeps cursor in current position" })           -- J keeps cursor in current position
 
-keymap("v", "<leader>p", '"_dP', opts)     -- paste without overwriting register
+keymap("v", "<leader>p", '"_dP', { noremap = true, silent = true, desc = "Paste without overwriting registerve" })  -- paste without overwriting register
 
-keymap("n", "<C-d>", "<C-d>zz", opts)      -- scroll down keeping cursor in center
-keymap("n", "<C-u>", "<C-u>zz", opts)      -- scroll up keeping cursor in center
+keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Scroll down keeping cursor in center" })   -- scroll down keeping cursor in center
+keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Scroll up keeping cursor in center" })     -- scroll up keeping cursor in center
 
-keymap("n", "n", "nzz", opts)              -- move to next search keeping word in center
-keymap("n", "N", "Nzz", opts)              -- move to previous search keeping word in center
+keymap("n", "n", "nzz", { noremap = true, silent = true, desc = "Move to next search keeping word in center" })     -- move to next search keeping word in center
+keymap("n", "N", "Nzz", { noremap = true, silent = true, desc = "Move to previous search keeping word in center" }) -- move to previous search keeping word in center
 
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts) -- shift left
-keymap("v", ">", ">gv", opts) -- shift right
+keymap("v", "<", "<gv", { noremap = true, silent = true, desc = "Shift left" })  -- shift left
+keymap("v", ">", ">gv", { noremap = true, silent = true, desc = "Shift right" }) -- shift right
 
 
 ----------------------
