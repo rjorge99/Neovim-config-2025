@@ -80,17 +80,17 @@ return {
         lspconfig["ts_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-            init_options = {
-                plugins = {
-                    {
-                        name = '@vue/typescript-plugin',
-                        location = vim.fn.stdpath 'data' ..
-                            '/mason/packages/vue-language-server/node_modules/@vue/language-server',
-                        languages = { 'vue' },
-                    },
-                },
-            },
+            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+            -- init_options = {
+            --     plugins = {
+            --         {
+            --             name = '@vue/typescript-plugin',
+            --             location = vim.fn.stdpath 'data' ..
+            --                 '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+            --             languages = { 'vue' },
+            --         },
+            --     },
+            -- },
         })
 
         -- configure css server
