@@ -2,11 +2,11 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)                                                                                       -- set space as leader key
-vim.g.mapleader =
-" "                                                                                                                        -- set leader key
-vim.g.maplocalleader =
-" "                                                                                                                        -- set local leader key
+keymap("", "<Space>", "<Nop>", opts) -- set space as leader key
+vim.g.mapleader = " "                -- set leader key
+vim.g.maplocalleader = " "
+
+keymap("n", "<leader><leader>s", ":w!<CR> :source %<CR>", { noremap = true, silent = true, desc = "Source file" })         -- Source file
 
 keymap("n", "<leader>ss", ":w!<CR>", { noremap = true, silent = true, desc = "Save" })                                     -- save
 keymap("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })                           -- exit insert mode
