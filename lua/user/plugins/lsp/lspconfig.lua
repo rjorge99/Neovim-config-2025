@@ -18,7 +18,6 @@ return {
             },
         })
 
-
         local keymap = vim.keymap
 
         local opts = { noremap = true, silent = true }
@@ -80,7 +79,7 @@ return {
         lspconfig["ts_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
             -- init_options = {
             --     plugins = {
             --         {
@@ -121,14 +120,13 @@ return {
         lspconfig["volar"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
-            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
             init_options = {
                 vue = {
                     hybridMode = false,
                 },
                 typescript = {
-                    tsdk =
-                        vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/typescript/lib/"
+                    tsdk = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/typescript/lib/",
                 },
             },
         })
@@ -165,7 +163,11 @@ return {
             },
         })
 
-
+        lspconfig["rust_analyzer"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { "rustup", "run", "stable", "rust-analyzer" },
+        })
 
         -- Muestra visualmente los errores
         vim.diagnostic.config({
